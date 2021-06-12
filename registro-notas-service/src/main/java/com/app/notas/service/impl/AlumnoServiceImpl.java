@@ -48,6 +48,12 @@ public class AlumnoServiceImpl implements AlumnoService {
 		alum=alumnoRepository.findByNombres(nombre);
 		return alum;
 	}
+
+	@Override
+	public Alumno findById(int id) {
+		
+		return alumnoRepository.findById(id).get();
+	}
 	
 
 }

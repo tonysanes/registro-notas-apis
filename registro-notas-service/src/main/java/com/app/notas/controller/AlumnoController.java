@@ -37,9 +37,13 @@ public class AlumnoController {
 	@ResponseBody public List<Alumno> findAll(){
 		return alumnoService.findAll();
 	}
-	@GetMapping("/api/alumnos/{nombre}")
+	@GetMapping("/api/alumnos/nombres/{nombre}")
 	@ResponseBody public List<Alumno> searchByNombre(@RequestBody String nombre){
 		return alumnoService.searchByNombre(nombre);
+	}
+	@GetMapping("/api/alumnos/{id}")
+	@ResponseBody public Alumno searchById(@PathVariable int id ){
+		return alumnoService.findById(id);
 	}
 	
 }

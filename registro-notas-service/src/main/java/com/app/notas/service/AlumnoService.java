@@ -10,5 +10,6 @@ public interface AlumnoService {
 	public boolean deletedAlumno(int id);
 	public List<Alumno> findAll();
 	public List<Alumno> searchByNombre(String nombre);
+	public Alumno findById(int id);
 
 }
