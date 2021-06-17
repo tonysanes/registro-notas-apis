@@ -2,11 +2,19 @@ package com.app.notas.entity;
 
 import java.util.Date;
 
+import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 @Entity
 public class Alumno {
 	@Id
@@ -16,6 +24,7 @@ public class Alumno {
 	private String nombres;
 	private String apellidos;
 	@Column(name = "fecha_nac")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "America/Lima")
 	private Date fechaNac;
 	private String nivel;
 	private String grado;
@@ -23,11 +32,15 @@ public class Alumno {
 	private String direccion;
 	private String telefono;
 	private String email;
-	@Column(name = "fecha_registro")
+	@Basic(optional = false)
+	@Column(name = "fecha_registro", insertable = false, updatable = false)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date fechaRegistro;
+	//@Basic(optional = false)
 	@Column(name = "fecha_modificacion")
+	@UpdateTimestamp
 	private Date fechaModificacion;
-	private boolean estado;
+	private boolean estado =true;
 	public int getId() {
 		return id;
 	}
