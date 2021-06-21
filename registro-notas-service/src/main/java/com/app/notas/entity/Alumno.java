@@ -11,7 +11,6 @@ import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -23,23 +22,27 @@ public class Alumno {
 	private int id;
 	private String nombres;
 	private String apellidos;
+	
 	@Column(name = "fecha_nac")
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "America/Lima")
 	private Date fechaNac;
+	
 	private String nivel;
 	private String grado;
 	private String seccion;
 	private String direccion;
 	private String telefono;
 	private String email;
+	
 	@Basic(optional = false)
 	@Column(name = "fecha_registro", insertable = false, updatable = false)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date fechaRegistro;
-	//@Basic(optional = false)
+	
 	@Column(name = "fecha_modificacion")
 	@UpdateTimestamp
 	private Date fechaModificacion;
+	
 	private boolean estado =true;
 	public int getId() {
 		return id;
