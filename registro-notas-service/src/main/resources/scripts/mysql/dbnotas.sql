@@ -13,7 +13,21 @@ CREATE TABLE `alumno` (
   `fecha_modificacion` datetime DEFAULT CURRENT_TIMESTAMP,
   `estado` tinyint DEFAULT '1',
   PRIMARY KEY (`id_alumno`)
-) 
+)
+
+CREATE TABLE `profesor` (
+  `id_profesor` int NOT NULL AUTO_INCREMENT,
+  `nombres` varchar(30) DEFAULT NULL,
+  `apellidos` varchar(50) DEFAULT NULL,
+  `dni` char(8) DEFAULT NULL,
+  `direccion` varchar(100) DEFAULT NULL,
+  `telefono` char(11) DEFAULT NULL,
+  `email` varchar(30) DEFAULT NULL,
+  `fecha_registro` datetime DEFAULT CURRENT_TIMESTAMP,
+  `fecha_modificacion` datetime DEFAULT CURRENT_TIMESTAMP,
+  `estado` tinyint DEFAULT NULL,
+  PRIMARY KEY (`id_profesor`)
+)
 
 INSERT INTO dbnotas.alumno
 (nombres, apellidos, fecha_nac, nivel, grado, seccion, direccion,

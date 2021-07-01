@@ -15,6 +15,21 @@ CREATE TABLE alumno (
   PRIMARY KEY (id_alumno)
 )
 
+CREATE TABLE profesor (
+  id_profesor serial NOT NULL,
+  nombres varchar(30) NULL,
+  apellidos varchar(50) NULL,
+  dni bpchar(8) NULL,
+  direccion varchar(100) NULL,
+  telefono bpchar(11) NULL,
+  email varchar(30) NULL,
+  fecha_registro timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  fecha_modificacion timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  estado bool NOT NULL DEFAULT true,
+  PRIMARY KEY (id_profesor)
+)
+
+
 INSERT INTO dbnotas.alumno
 (nombres, apellidos, fecha_nac, nivel, grado, seccion, direccion,
  telefono, email, fecha_registro, fecha_modificacion, estado)
