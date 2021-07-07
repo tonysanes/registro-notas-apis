@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.app.notas.entity.Alumno;
+import com.app.notas.entity.AlumnoView;
 import com.app.notas.service.AlumnoService;
 
 @RestController
@@ -23,6 +24,7 @@ import com.app.notas.service.AlumnoService;
 public class AlumnoController {
 	@Autowired
 	private AlumnoService alumnoService;
+	
 	@PostMapping("/api/alumnos")
 	@ResponseBody public Alumno addAlumno(@RequestBody Alumno alumno) {
 		return alumnoService.addAlumno(alumno);
@@ -68,6 +70,12 @@ public class AlumnoController {
 	@GetMapping("/api/alumnos/{id}")
 	@ResponseBody public Alumno searchById(@PathVariable int id ){
 		return alumnoService.findById(id);
+	}
+	
+	//*****Alumno View
+	@GetMapping("/api/alumnos/autosuggets")
+	@ResponseBody public List<AlumnoView> findAllStudentsAutosuggests(){
+		return alumnoService.findAllStudentsView();
 	}
 	
 }

@@ -16,7 +16,9 @@ import org.springframework.stereotype.Service;
 import com.app.notas.domain.OrderCriteria;
 import com.app.notas.domain.SearchCriteria;
 import com.app.notas.entity.Alumno;
+import com.app.notas.entity.AlumnoView;
 import com.app.notas.repository.AlumnoRepository;
+import com.app.notas.repository.AlumnoViewRepository;
 import com.app.notas.repository.specs.CustomSpecification;
 import com.app.notas.service.AlumnoService;
 import com.app.notas.utils.JsonUtil;
@@ -28,6 +30,9 @@ import com.app.notas.utils.SpecUtil;
 public class AlumnoServiceImpl implements AlumnoService {
 	@Autowired
     private AlumnoRepository alumnoRepository;
+	
+	@Autowired
+	private AlumnoViewRepository alumnoViewRepository;
 	
 	public Alumno addAlumno(Alumno alumno) {
 		Alumno alum=null;
@@ -53,7 +58,7 @@ public class AlumnoServiceImpl implements AlumnoService {
 	}
 
 	public List<Alumno> findAll() {
-		List<Alumno> result =  StreamSupport.stream(alumnoRepository.findAll().spliterator(), false).collect(Collectors.toList());
+		List<Alumno> result =  StreamSupport.stream(alumnoRepository.findAll(Sort.by(Sort.Direction.DESC, "fechaModificacion")).spliterator(), false).collect(Collectors.toList());
 		return result;
 	}
 
@@ -98,6 +103,14 @@ public class AlumnoServiceImpl implements AlumnoService {
 		Page<Alumno> pagedResult = alumnoRepository.findAll(alumnoSpec, paging);
 
 		return pagedResult;
+	}
+
+	public List<AlumnoView> findAllStudentsView() {
+		return alumnoViewRepository.findAll();
+	}
+
+	public List<AlumnoView> findAllStudentsByFullname(String fullname) {
+		return alumnoViewRepository.findByFullnameContaining(fullname);
 	}
 	
 
