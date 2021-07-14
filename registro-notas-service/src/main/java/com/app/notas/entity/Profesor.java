@@ -30,7 +30,25 @@ public class Profesor {
 	@Column(name = "fecha_modificacion")
 	@UpdateTimestamp
 	private Date fechaMod;
+	@Column(name = "fecha_nacimiento", insertable = false, updatable = false)
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date fechaNac;
+	private String genero;
 	private boolean estado;
+	
+	
+	public Date getFechaNac() {
+		return fechaNac;
+	}
+	public void setFechaNac(Date fechaNac) {
+		this.fechaNac = fechaNac;
+	}
+	public String getGenero() {
+		return genero;
+	}
+	public void setGenero(String genero) {
+		this.genero = genero;
+	}
 	public int getId() {
 		return id;
 	}
@@ -91,8 +109,15 @@ public class Profesor {
 	public void setEstado(boolean estado) {
 		this.estado = estado;
 	}
+	@Override
+	public String toString() {
+		return "Profesor [id=" + id + ", nombres=" + nombres + ", apellidos=" + apellidos + ", dni=" + dni
+				+ ", direccion=" + direccion + ", telefono=" + telefono + ", email=" + email + ", fechaReg=" + fechaReg
+				+ ", fechaMod=" + fechaMod + ", fechaNac=" + fechaNac + ", genero=" + genero + ", estado=" + estado
+				+ "]";
+	}
 	public Profesor(int id, String nombres, String apellidos, String dni, String direccion, int telefono, String email,
-			Date fechaReg, Date fechaMod, boolean estado) {
+			Date fechaReg, Date fechaMod, Date fechaNac, String genero, boolean estado) {
 		super();
 		this.id = id;
 		this.nombres = nombres;
@@ -103,17 +128,15 @@ public class Profesor {
 		this.email = email;
 		this.fechaReg = fechaReg;
 		this.fechaMod = fechaMod;
+		this.fechaNac = fechaNac;
+		this.genero = genero;
 		this.estado = estado;
 	}
 	public Profesor() {
 		super();
 	}
-	@Override
-	public String toString() {
-		return "Profesor [id=" + id + ", nombres=" + nombres + ", apellidos=" + apellidos + ", dni=" + dni
-				+ ", direccion=" + direccion + ", telefono=" + telefono + ", email=" + email + ", fechaReg=" + fechaReg
-				+ ", fechaMod=" + fechaMod + ", estado=" + estado + "]";
-	}
+	
+	
 	
 	
 	

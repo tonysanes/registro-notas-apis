@@ -30,6 +30,7 @@ public class Alumno {
 	private String nivel;
 	private String grado;
 	private String seccion;
+	private String genero;
 	private String direccion;
 	private String telefono;
 	private String email;
@@ -44,6 +45,14 @@ public class Alumno {
 	private Date fechaModificacion;
 	
 	private boolean estado =true;
+	
+	
+	public String getGenero() {
+		return genero;
+	}
+	public void setGenero(String genero) {
+		this.genero = genero;
+	}
 	public int getId() {
 		return id;
 	}
@@ -122,7 +131,7 @@ public class Alumno {
 	public void setEstado(boolean estado) {
 		this.estado = estado;
 	}
-	public Alumno(int id, String nombres, String apellidos, Date fechaNac, String nivel, String grado, String seccion,
+	public Alumno(int id, String nombres, String apellidos, Date fechaNac, String nivel, String grado, String seccion, String genero,
 			String direccion, String telefono, String email, Date fechaRegistro, Date fechaModificacion,
 			boolean estado) {
 		super();
@@ -133,6 +142,7 @@ public class Alumno {
 		this.nivel = nivel;
 		this.grado = grado;
 		this.seccion = seccion;
+		this.genero = genero;
 		this.direccion = direccion;
 		this.telefono = telefono;
 		this.email = email;
@@ -146,10 +156,11 @@ public class Alumno {
 	@Override
 	public String toString() {
 		return "Alumno [id=" + id + ", nombres=" + nombres + ", apellidos=" + apellidos + ", fechaNac=" + fechaNac
-				+ ", nivel=" + nivel + ", grado=" + grado + ", seccion=" + seccion + ", direccion=" + direccion
-				+ ", telefono=" + telefono + ", email=" + email + ", fechaRegistro=" + fechaRegistro
-				+ ", fechaModificacion=" + fechaModificacion + ", estado=" + estado + "]";
+				+ ", nivel=" + nivel + ", grado=" + grado + ", seccion=" + seccion + ", genero=" + genero
+				+ ", direccion=" + direccion + ", telefono=" + telefono + ", email=" + email + ", fechaRegistro="
+				+ fechaRegistro + ", fechaModificacion=" + fechaModificacion + ", estado=" + estado + "]";
 	}
+	
 	
 	
 
