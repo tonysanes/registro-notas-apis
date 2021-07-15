@@ -2,6 +2,7 @@ package com.app.notas.entity;
 
 import java.util.Date;
 
+import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,6 +13,7 @@ import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.UpdateTimestamp;
 
+
 @Entity
 public class Profesor {
 	@Id
@@ -20,19 +22,20 @@ public class Profesor {
 	private int id;
 	private String nombres;
 	private String apellidos;
+	@Column(name = "fecha_nacimiento")
+	@Temporal(TemporalType.DATE)
+	private Date fechaNac;
 	private String dni;
 	private String direccion;
-	private int telefono;
+	private String telefono;
 	private String email;
+	@Basic(optional = false)
 	@Column(name = "fecha_registro", insertable = false, updatable = false)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date fechaReg;
 	@Column(name = "fecha_modificacion")
 	@UpdateTimestamp
 	private Date fechaMod;
-	@Column(name = "fecha_nacimiento", insertable = false, updatable = false)
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date fechaNac;
 	private String genero;
 	private boolean estado;
 	
@@ -79,10 +82,10 @@ public class Profesor {
 	public void setDireccion(String direccion) {
 		this.direccion = direccion;
 	}
-	public int getTelefono() {
+	public String getTelefono() {
 		return telefono;
 	}
-	public void setTelefono(int telefono) {
+	public void setTelefono(String telefono) {
 		this.telefono = telefono;
 	}
 	public String getEmail() {
@@ -116,7 +119,7 @@ public class Profesor {
 				+ ", fechaMod=" + fechaMod + ", fechaNac=" + fechaNac + ", genero=" + genero + ", estado=" + estado
 				+ "]";
 	}
-	public Profesor(int id, String nombres, String apellidos, String dni, String direccion, int telefono, String email,
+	public Profesor(int id, String nombres, String apellidos, String dni, String direccion, String telefono, String email,
 			Date fechaReg, Date fechaMod, Date fechaNac, String genero, boolean estado) {
 		super();
 		this.id = id;

@@ -20,6 +20,7 @@ CREATE TABLE profesor (
   id_profesor serial NOT NULL,
   nombres varchar(30) NULL,
   apellidos varchar(50) NULL,
+  fecha_nacimiento date NULL,
   dni bpchar(8) NULL,
   direccion varchar(100) NULL,
   telefono bpchar(11) NULL,
@@ -27,7 +28,6 @@ CREATE TABLE profesor (
   fecha_registro timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   fecha_modificacion timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   genero bpchar(1) NULL,
-  fecha_nacimiento timestamp NULL,
   estado bool NOT NULL DEFAULT true,
   PRIMARY KEY (id_profesor)
 )

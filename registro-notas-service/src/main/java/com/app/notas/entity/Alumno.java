@@ -13,7 +13,6 @@ import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.UpdateTimestamp;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 @Entity
 public class Alumno {
 	@Id
@@ -24,7 +23,7 @@ public class Alumno {
 	private String apellidos;
 	
 	@Column(name = "fecha_nac")
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd", timezone = "America/Lima")
+	@Temporal(TemporalType.DATE)
 	private Date fechaNac;
 	
 	private String nivel;

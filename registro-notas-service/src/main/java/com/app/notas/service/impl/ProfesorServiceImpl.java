@@ -1,8 +1,11 @@
 package com.app.notas.service.impl;
 
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.app.notas.entity.Profesor;
@@ -42,7 +45,7 @@ public class ProfesorServiceImpl implements ProfesorService {
 
 	@Override
 	public List<Profesor> findAll() {
-		List<Profesor> result =  profesorRepository.findAll();
+		List<Profesor> result =  StreamSupport.stream(profesorRepository.findAll(Sort.by(Sort.Direction.DESC, "fechaMod")).spliterator(), false).collect(Collectors.toList());
 		return result;
 	}
 
