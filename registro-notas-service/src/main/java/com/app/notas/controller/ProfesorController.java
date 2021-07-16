@@ -3,6 +3,8 @@ package com.app.notas.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,6 +38,26 @@ public class ProfesorController {
 	@GetMapping("/api/profesores")
 	@ResponseBody public List<Profesor> findAll(){
 		return profesorService.findAll();
+	}
+	/**
+	 * 
+	 * @param filters
+	 * @param sorts
+	 * @param page
+	 * @param size
+	 * @return un listado de profesores con paginacion, ordenamiento, filtros
+	 */
+	@GetMapping(
+			value = {
+					"/api/profesores/{sorts}/{page}/{size}", 
+					"/api/profesores/{filters}/{page}/{size}", 
+					"/api/profesores/{page}/{size}", 
+					"/api/profesores/{filters}/{sorts}/{page}/{size}" 
+			},
+			consumes = { MediaType.APPLICATION_FORM_URLENCODED_VALUE }
+		)
+	@ResponseBody public Page<Profesor> findAllTeachers(@PathVariable(required = false) String filters, @PathVariable(required = false) String sorts, @PathVariable Integer page, @PathVariable Integer size){
+		return profesorService.findAllTeachers(filters, sorts, page, size);
 	}
 
 }

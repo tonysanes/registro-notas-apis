@@ -2,6 +2,8 @@ package com.app.notas.service;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+
 import com.app.notas.entity.Profesor;
 
 public interface ProfesorService {
@@ -12,5 +14,6 @@ public interface ProfesorService {
 	public List<Profesor> searchByNombre(String nombre);
 	public Profesor searchByDni(String dni);
 	public Profesor findById(int id);
+	public Page<Profesor> findAllTeachers(String filters, String sorts, Integer page, Integer size);
 
 }
