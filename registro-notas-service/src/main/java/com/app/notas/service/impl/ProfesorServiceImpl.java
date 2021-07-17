@@ -16,7 +16,9 @@ import org.springframework.stereotype.Service;
 import com.app.notas.domain.OrderCriteria;
 import com.app.notas.domain.SearchCriteria;
 import com.app.notas.entity.Profesor;
+import com.app.notas.entity.ProfesorView;
 import com.app.notas.repository.ProfesorRepository;
+import com.app.notas.repository.ProfesorViewRepository;
 import com.app.notas.repository.specs.CustomSpecification;
 import com.app.notas.service.ProfesorService;
 import com.app.notas.utils.JsonUtil;
@@ -27,6 +29,9 @@ import com.app.notas.utils.SpecUtil;
 public class ProfesorServiceImpl implements ProfesorService {
 	@Autowired
 	private ProfesorRepository profesorRepository;
+	
+	@Autowired
+	private ProfesorViewRepository profesorViewRepository;
 
 	@Override
 	public Profesor addProfesor(Profesor profesor) {
@@ -107,6 +112,15 @@ public class ProfesorServiceImpl implements ProfesorService {
 
 		return pagedResult;
 		
+	}
+
+	public List<ProfesorView> findAllTeachersByFullname(String fullname) {
+		
+		return profesorViewRepository.findByFullnameContaining(fullname);
+	}
+
+	public List<ProfesorView> findAllTeachersView() {
+		return profesorViewRepository.findAll();
 	}
 
 }

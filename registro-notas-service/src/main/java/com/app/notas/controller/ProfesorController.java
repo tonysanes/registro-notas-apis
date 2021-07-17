@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.app.notas.entity.Profesor;
+import com.app.notas.entity.ProfesorView;
 import com.app.notas.service.ProfesorService;
 
 @RestController
@@ -58,6 +59,12 @@ public class ProfesorController {
 		)
 	@ResponseBody public Page<Profesor> findAllTeachers(@PathVariable(required = false) String filters, @PathVariable(required = false) String sorts, @PathVariable Integer page, @PathVariable Integer size){
 		return profesorService.findAllTeachers(filters, sorts, page, size);
+	}
+	
+	//*****profesor View
+	@GetMapping("/api/profesores/autosuggets")
+	@ResponseBody public List<ProfesorView> findAllTeachersAutosuggests(){
+		return profesorService.findAllTeachersView();
 	}
 
 }

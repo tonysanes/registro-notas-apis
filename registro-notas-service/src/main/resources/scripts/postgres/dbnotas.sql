@@ -44,6 +44,22 @@ AS SELECT a.id_alumno AS id,
 ALTER TABLE dbnotas.alumno_view OWNER TO postgres;
 GRANT ALL ON TABLE dbnotas.alumno_view TO postgres;
 
+
+
+CREATE OR REPLACE VIEW dbnotas.profesor_view
+AS SELECT a.id_profesor AS id,
+    a.nombres,
+    a.apellidos,
+    concat(a.nombres, ' ', a.apellidos) AS fullname
+   FROM dbnotas.profesor a;
+
+-- Permissions
+
+ALTER TABLE dbnotas.profesor_view OWNER TO postgres;
+GRANT ALL ON TABLE dbnotas.profesor_view TO postgres;
+
+
+
 INSERT INTO dbnotas.profesor (nombres,apellidos,dni,direccion,telefono,email,fecha_registro,fecha_modificacion,estado,genero,fecha_nacimiento) VALUES
 	 ('Laura','Calcinas','75268532','Av. Lasas 999','24586325   ','laura@gmail.com','2021-06-30 23:58:57.928672','2021-07-03 23:24:45.201',false,NULL,NULL),
 	 ('Tadeo','Martines','25478562','Urb. Santa Catalina','1254789    ','tadeo.martines@gmail.com','2021-07-03 23:27:33.09926','2021-07-03 23:27:33.098',false,NULL,NULL);
