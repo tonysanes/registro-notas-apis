@@ -3,11 +3,10 @@ package com.app.notas.repository.specs;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Predicate;
-import javax.persistence.criteria.Root;
-
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Predicate;
+import jakarta.persistence.criteria.Root;
 import org.springframework.data.jpa.domain.Specification;
 
 import com.app.notas.domain.SearchCriteria;
@@ -29,7 +28,7 @@ public class CustomSpecification<T> implements Specification<T>{
     }
 	
 	public Predicate toPredicate(Root<T> root, CriteriaQuery<?> query, CriteriaBuilder builder) {
-		List<Predicate> predicates = new ArrayList<>();
+		List<Predicate> predicates;
 		predicates = SpecUtil.buildPredicates(root, builder, list);
 		return builder.and(predicates.toArray(new Predicate[0]));
 	}
