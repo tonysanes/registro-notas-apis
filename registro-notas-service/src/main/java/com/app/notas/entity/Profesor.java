@@ -13,39 +13,39 @@ import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.UpdateTimestamp;
 
+
 @Entity
-public class Alumno {
+public class Profesor {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id_alumno")
+	@Column(name="id_profesor")
 	private int id;
 	private String nombres;
 	private String apellidos;
-	
-	@Column(name = "fecha_nac")
+	@Column(name = "fecha_nacimiento")
 	@Temporal(TemporalType.DATE)
 	private Date fechaNac;
-	
-	private String nivel;
-	private String grado;
-	private String seccion;
-	private String genero;
+	private String dni;
 	private String direccion;
 	private String telefono;
 	private String email;
-	
 	@Basic(optional = false)
 	@Column(name = "fecha_registro", insertable = false, updatable = false)
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date fechaRegistro;
-	
+	private Date fechaReg;
 	@Column(name = "fecha_modificacion")
 	@UpdateTimestamp
-	private Date fechaModificacion;
+	private Date fechaMod;
+	private String genero;
+	private boolean estado;
 	
-	private boolean estado =true;
 	
-	
+	public Date getFechaNac() {
+		return fechaNac;
+	}
+	public void setFechaNac(Date fechaNac) {
+		this.fechaNac = fechaNac;
+	}
 	public String getGenero() {
 		return genero;
 	}
@@ -70,29 +70,11 @@ public class Alumno {
 	public void setApellidos(String apellidos) {
 		this.apellidos = apellidos;
 	}
-	public Date getFechaNac() {
-		return fechaNac;
+	public String getDni() {
+		return dni;
 	}
-	public void setFechaNac(Date fechaNac) {
-		this.fechaNac = fechaNac;
-	}
-	public String getNivel() {
-		return nivel;
-	}
-	public void setNivel(String nivel) {
-		this.nivel = nivel;
-	}
-	public String getGrado() {
-		return grado;
-	}
-	public void setGrado(String grado) {
-		this.grado = grado;
-	}
-	public String getSeccion() {
-		return seccion;
-	}
-	public void setSeccion(String seccion) {
-		this.seccion = seccion;
+	public void setDni(String dni) {
+		this.dni = dni;
 	}
 	public String getDireccion() {
 		return direccion;
@@ -112,17 +94,17 @@ public class Alumno {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public Date getFechaRegistro() {
-		return fechaRegistro;
+	public Date getFechaReg() {
+		return fechaReg;
 	}
-	public void setFechaRegistro(Date fechaRegistro) {
-		this.fechaRegistro = fechaRegistro;
+	public void setFechaReg(Date fechaReg) {
+		this.fechaReg = fechaReg;
 	}
-	public Date getFechaModificacion() {
-		return fechaModificacion;
+	public Date getFechaMod() {
+		return fechaMod;
 	}
-	public void setFechaModificacion(Date fechaModificacion) {
-		this.fechaModificacion = fechaModificacion;
+	public void setFechaMod(Date fechaMod) {
+		this.fechaMod = fechaMod;
 	}
 	public boolean isEstado() {
 		return estado;
@@ -130,35 +112,34 @@ public class Alumno {
 	public void setEstado(boolean estado) {
 		this.estado = estado;
 	}
-	public Alumno(int id, String nombres, String apellidos, Date fechaNac, String nivel, String grado, String seccion, String genero,
-			String direccion, String telefono, String email, Date fechaRegistro, Date fechaModificacion,
-			boolean estado) {
+	@Override
+	public String toString() {
+		return "Profesor [id=" + id + ", nombres=" + nombres + ", apellidos=" + apellidos + ", dni=" + dni
+				+ ", direccion=" + direccion + ", telefono=" + telefono + ", email=" + email + ", fechaReg=" + fechaReg
+				+ ", fechaMod=" + fechaMod + ", fechaNac=" + fechaNac + ", genero=" + genero + ", estado=" + estado
+				+ "]";
+	}
+	public Profesor(int id, String nombres, String apellidos, String dni, String direccion, String telefono, String email,
+			Date fechaReg, Date fechaMod, Date fechaNac, String genero, boolean estado) {
 		super();
 		this.id = id;
 		this.nombres = nombres;
 		this.apellidos = apellidos;
-		this.fechaNac = fechaNac;
-		this.nivel = nivel;
-		this.grado = grado;
-		this.seccion = seccion;
-		this.genero = genero;
+		this.dni = dni;
 		this.direccion = direccion;
 		this.telefono = telefono;
 		this.email = email;
-		this.fechaRegistro = fechaRegistro;
-		this.fechaModificacion = fechaModificacion;
+		this.fechaReg = fechaReg;
+		this.fechaMod = fechaMod;
+		this.fechaNac = fechaNac;
+		this.genero = genero;
 		this.estado = estado;
 	}
-	public Alumno() {
+	public Profesor() {
 		super();
 	}
-	@Override
-	public String toString() {
-		return "Alumno [id=" + id + ", nombres=" + nombres + ", apellidos=" + apellidos + ", fechaNac=" + fechaNac
-				+ ", nivel=" + nivel + ", grado=" + grado + ", seccion=" + seccion + ", genero=" + genero
-				+ ", direccion=" + direccion + ", telefono=" + telefono + ", email=" + email + ", fechaRegistro="
-				+ fechaRegistro + ", fechaModificacion=" + fechaModificacion + ", estado=" + estado + "]";
-	}
+	
+	
 	
 	
 	

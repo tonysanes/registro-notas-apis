@@ -8,11 +8,11 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 
-import com.app.notas.entity.Alumno;
+import com.app.notas.entity.Profesor;
 
 @Repository
-public interface AlumnoRepository extends PagingAndSortingRepository<Alumno, Integer>, JpaSpecificationExecutor<Alumno>{
-	List<Alumno> findByNombres(String nombres);
-	Page<Alumno> findAll(Pageable pageable);
-
+public interface ProfesorRepository extends PagingAndSortingRepository<Profesor, Integer>, JpaSpecificationExecutor<Profesor>{
+	List<Profesor> findByNombres(String Nombres);
+	Profesor findByDni(String dni);
+	Page<Profesor> findAll(Pageable pageable);
 }
