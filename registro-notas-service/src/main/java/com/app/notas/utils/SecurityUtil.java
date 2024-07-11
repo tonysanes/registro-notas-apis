@@ -12,8 +12,8 @@ import javax.crypto.spec.SecretKeySpec;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.keygen.KeyGenerators;
+/*import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.keygen.KeyGenerators;*/
 
 /**
  * Program to Encrypt / Decrypt String Using AES 128 bit Encryption Algorithm
@@ -71,7 +71,7 @@ public class SecurityUtil {
         return decryptedText;
     }
     
-    public static String generateKey(){
+/*    public static String generateKey(){
 		return KeyGenerators.string().generateKey();
 	}
 	public static String generateKeyUUID(){
@@ -82,7 +82,7 @@ public class SecurityUtil {
 	}
 	public static boolean matches(String oldPassword, String encodedPassword) {
 		return new BCryptPasswordEncoder().matches(oldPassword, encodedPassword);
-	}
+	}*/
 	
 	public static String decodeUTF8(String encodeString) {
 		String decoded = null;
@@ -94,7 +94,7 @@ public class SecurityUtil {
 		return decoded;
 	}
     
-    public static void main(String[] args) {
+/*    public static void main(String[] args) {
         String plainString = "test";
         
         String encryptionKey = generateKey();
@@ -109,5 +109,5 @@ public class SecurityUtil {
         System.out.println("Encrypt String  : "+encyptStr);
         System.out.println("Decrypt String  : "+decryptStr);
         
-    }
+    }*/
 }
